@@ -62,7 +62,7 @@ import DeckList from '@/components/Decks/DeckList.vue'
 export default {
   components: { DeckList },
   layout: 'default',
-  asyncData(context) {
+  fetch(context) {
     // eslint-disable-next-line nuxt/no-timing-in-fetch-data
     return new Promise((resolve, reject) => {
       // eslint-disable-next-line nuxt/no-timing-in-fetch-data
@@ -99,7 +99,7 @@ export default {
       // reject(new Error())
     })
       .then((data) => {
-        return data
+        context.store.dispatch('setDecks', data.decks)
       })
       .catch((e) => {
         // eslint-disable-next-line no-console
@@ -107,10 +107,10 @@ export default {
         // context.error(e)
       })
   },
-  created() {
-    this.$store.dispatch('setDecks', this.decks)
-    // eslint-disable-next-line no-console
-    console.log(this.$store.getters.decks)
+  computed: {
+    decks() {
+      return this.$store.getters.decks
+    },
   },
 
   methods: {
