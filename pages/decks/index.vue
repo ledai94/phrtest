@@ -8,44 +8,13 @@
         </button>
       </div>
       <ul class="deck-list">
-        <li class="">
+        <li v-for="deck in decks" :key="deck._id" class="">
           <nuxt-link class="deck" to="/decks/1">
             <div class="card deck-card">
-              <img
-                src="https://img2.pngio.com/intl-word-v601-english-for-mac-english-class-wallpaper-png-1920_1080.png"
-                alt=""
-              />
+              <img src="deck.thumbnail" alt="" />
               <div class="card_body">
-                <h3>Tieu De</h3>
-                <p>Mo ta</p>
-              </div>
-            </div>
-          </nuxt-link>
-        </li>
-        <li class="">
-          <nuxt-link class="deck" to="/decks/2">
-            <div class="card deck-card">
-              <img
-                src="https://img2.pngio.com/intl-word-v601-english-for-mac-english-class-wallpaper-png-1920_1080.png"
-                alt=""
-              />
-              <div class="card_body">
-                <h3>Tieu De</h3>
-                <p>Mo ta</p>
-              </div>
-            </div>
-          </nuxt-link>
-        </li>
-        <li class="">
-          <nuxt-link class="deck" to="/decks/3">
-            <div class="card deck-card">
-              <img
-                src="https://img2.pngio.com/intl-word-v601-english-for-mac-english-class-wallpaper-png-1920_1080.png"
-                alt=""
-              />
-              <div class="card_body">
-                <h3>Tieu De</h3>
-                <p>Mo ta</p>
+                <h3>{{ deck.name }}</h3>
+                <p>{{ deck.description }}</p>
               </div>
             </div>
           </nuxt-link>
@@ -97,7 +66,29 @@ export default {
 
   data() {
     return {
-      deckID: '1',
+      decks: [
+        {
+          _id: 1,
+          name: 'learn english',
+          description: 'lorem class=d_flex justify_content_between my_3',
+          thumbnail:
+            'https://img2.pngio.com/intl-word-v601-english-for-mac-english-class-wallpaper-png-1920_1080.png',
+        },
+        {
+          _id: 2,
+          name: 'learn english',
+          description: 'lorem class=d_flex justify_content_between my_3',
+          thumbnail:
+            'https://img2.pngio.com/intl-word-v601-english-for-mac-english-class-wallpaper-png-1920_1080.png',
+        },
+        {
+          _id: 3,
+          name: 'learn english',
+          description: 'lorem class=d_flex justify_content_between my_3',
+          thumbnail:
+            'https://img2.pngio.com/intl-word-v601-english-for-mac-english-class-wallpaper-png-1920_1080.png',
+        },
+      ],
     }
   },
   methods: {

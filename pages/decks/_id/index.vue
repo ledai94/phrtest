@@ -10,32 +10,13 @@
         <hr class="divine" />
 
         <div class="r">
-          <div class="c_3">
-            <div class="front-card">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS54R1bYvoPsIWo6BHqIivDptSPKjA8Y9oLOA&usqp=CAU"
-                alt=""
-              />
+          <div v-for="card in cards" :key="card._id" class="c_3">
+            <div class="card">
+              <div class="front-card">
+                <img :src="card.picture" alt="" />
+              </div>
+              <div class="back-card">{{ card.keyword }}</div>
             </div>
-            <div class="back-card"></div>
-          </div>
-          <div class="c_3">
-            <div class="front-card">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS54R1bYvoPsIWo6BHqIivDptSPKjA8Y9oLOA&usqp=CAU"
-                alt=""
-              />
-            </div>
-            <div class="back-card"></div>
-          </div>
-          <div class="c_3">
-            <div class="front-card">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS54R1bYvoPsIWo6BHqIivDptSPKjA8Y9oLOA&usqp=CAU"
-                alt=""
-              />
-            </div>
-            <div class="back-card"></div>
           </div>
         </div>
       </div>
@@ -84,6 +65,36 @@
 export default {
   // layout: 'default',
   // context se hung all va nang => lay ra prop
+  data() {
+    return {
+      cards: [
+        {
+          _id: 1,
+          picture:
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS54R1bYvoPsIWo6BHqIivDptSPKjA8Y9oLOA&usqp=CAU',
+          keyword: 'road',
+        },
+        {
+          _id: 2,
+          picture:
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS54R1bYvoPsIWo6BHqIivDptSPKjA8Y9oLOA&usqp=CAU',
+          keyword: 'road',
+        },
+        {
+          _id: 3,
+          picture:
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS54R1bYvoPsIWo6BHqIivDptSPKjA8Y9oLOA&usqp=CAU',
+          keyword: 'road',
+        },
+        {
+          _id: 4,
+          picture:
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS54R1bYvoPsIWo6BHqIivDptSPKjA8Y9oLOA&usqp=CAU',
+          keyword: 'road',
+        },
+      ],
+    }
+  },
   methods: {
     closeModal() {
       this.$modal.close({ name: 'CreateCardModal' })
