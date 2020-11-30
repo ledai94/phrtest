@@ -107,6 +107,11 @@ export default {
         // context.error(e)
       })
   },
+  created() {
+    this.$store.dispatch('setDecks', this.decks)
+    // eslint-disable-next-line no-console
+    console.log(this.$store.getters.decks)
+  },
 
   methods: {
     closeModal() {
