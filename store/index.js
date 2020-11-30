@@ -14,7 +14,7 @@ const createStore = () => {
         vuexContext.commit('setDecks', decks)
       },
     },
-    getter: {
+    getters: {
       decks(state) {
         return state.decks
       },

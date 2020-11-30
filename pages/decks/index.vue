@@ -71,7 +71,7 @@ export default {
           decks: [
             {
               _id: 1,
-              name: `learn english by  ${context.params.id}`,
+              name: `learn english`,
               description:
                 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
               thumbnail:
@@ -79,7 +79,7 @@ export default {
             },
             {
               _id: 2,
-              name: `learn english by  ${context.params.id}`,
+              name: `learn english `,
               description:
                 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
               thumbnail:
@@ -87,7 +87,7 @@ export default {
             },
             {
               _id: 3,
-              name: `learn english by  ${context.params.id}`,
+              name: `learn english `,
               description:
                 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
               thumbnail:
