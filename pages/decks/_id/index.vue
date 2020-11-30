@@ -5,7 +5,7 @@
         <h3>Deck#{{ $route.params.id }}: learn enshfg</h3>
         <div class="tools">
           <button class="btn btn_success">start now</button>
-          <button>create a card</button>
+          <button @click="openModal">create a card</button>
         </div>
         <hr class="divine" />
 
@@ -40,6 +40,42 @@
         </div>
       </div>
     </div>
+    <v-modal name="CreateCardModal"
+      ><div class="modal_body">
+        <h1>Create a new Card</h1>
+        <form action="">
+          <div class="form-group">
+            <label for="">Name</label>
+            <input
+              class="form_control"
+              type="text"
+              placeholder="pls enter name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="">Des</label>
+            <textarea
+              class="form_control"
+              type="text"
+              placeholder="pls enter des"
+            />
+          </div>
+          <div class="form-group">
+            <label for="">Thumnail</label>
+            <input type="file" />
+            <div class="preview"></div>
+          </div>
+          <div class="form-group">
+            <button class="btn btn_danger" @click.prevent="closeModal">
+              close
+            </button>
+            <button class="btn btn_success" @click.prevent="createDeck">
+              Create
+            </button>
+          </div>
+        </form>
+      </div>
+    </v-modal>
   </section>
   <!-- <div>index deck {{ $route.params.id }} is active</div> -->
 </template>
@@ -48,6 +84,14 @@
 export default {
   // layout: 'default',
   // context se hung all va nang => lay ra prop
+  methods: {
+    closeModal() {
+      this.$modal.close({ name: 'CreateCardModal' })
+    },
+    openModal() {
+      this.$modal.open({ name: 'CreateCardModal' })
+    },
+  },
 }
 </script>
 
@@ -62,6 +106,10 @@ section {
   }
   .divide {
     margin: 2rem 0;
+  }
+  .modal_body {
+    background-color: #fff;
+    padding: 1rem;
   }
 }
 </style>

@@ -51,16 +51,43 @@
           </nuxt-link>
         </li>
       </ul>
-      <app-modal />
-      <button @click="showModal">modal!</button>
-      <v-modal name="test"
-        ><div class="test_body">
-          <h1>hi hello test modal</h1>
-          <button class="btn btn_danger" @click.prevent="closeModal">
-            close
-          </button>
+      <v-modal name="CreateDeckModal"
+        ><div class="modal_body">
+          <h1>Create a new Deck</h1>
+          <form action="">
+            <div class="form-group">
+              <label for="">Name</label>
+              <input
+                class="form_control"
+                type="text"
+                placeholder="pls enter name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="">Des</label>
+              <textarea
+                class="form_control"
+                type="text"
+                placeholder="pls enter des"
+              />
+            </div>
+            <div class="form-group">
+              <label for="">Thumnail</label>
+              <input type="file" />
+              <div class="preview"></div>
+            </div>
+            <div class="form-group">
+              <button class="btn btn_danger" @click.prevent="closeModal">
+                close
+              </button>
+              <button class="btn btn_success" @click.prevent="createDeck">
+                Create
+              </button>
+            </div>
+          </form>
         </div>
       </v-modal>
+      <button @click="showModal">modal!</button>
     </div>
   </div>
 </template>
@@ -74,30 +101,11 @@ export default {
     }
   },
   methods: {
-    showModal() {
-      // we must pass object params with all the information
-
-      const params = {
-        title: 'Test!',
-        text: 'test test test',
-        // we are passing callback method for our confirm button
-        onConfirm: () => {
-          return this.alertFunc()
-        },
-      }
-      // now we can call function that will reveal our modal
-      this.$modal.show(params)
-    },
-    // we pass this method as example
-    alertFunc() {
-      alert('Hello!')
-    },
-
     closeModal() {
-      this.$modal.close({ name: 'test' })
+      this.$modal.close({ name: 'CreateDeckModal' })
     },
     openModal() {
-      this.$modal.open({ name: 'test' })
+      this.$modal.open({ name: 'CreateDeckModal' })
     },
     showDeck() {
       this.$router.push(`/decks/${this.deckID}`)
@@ -129,9 +137,7 @@ export default {
     }
   }
 }
-</style>
-<style lang="scss">
-.test_body {
+.modal_body {
   background-color: #fff;
   padding: 1rem;
 }

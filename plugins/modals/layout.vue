@@ -14,17 +14,6 @@
         </div>
       </div>
     </div>
-    <div v-if="visible" class="modal-wrapper">
-      <h2>{{ title }}</h2>
-
-      <p>{{ text }}</p>
-
-      <div class="modal-buttons">
-        <button class="modal-button" @click="hide">Close</button>
-
-        <button class="modal-button" @click="confirm">Confirm</button>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -57,36 +46,8 @@ export default {
         this.close(params)
       }
     })
-    VModal.EventBus.$on('show', (params) => {
-      this.show(params)
-    })
   },
   methods: {
-    hide() {
-      // method for closing modal
-      this.visible = false
-    },
-    confirm() {
-      if (typeof this.onConfirm === 'function') {
-        // run passed function and then close the modal
-        this.onConfirm()
-        this.hide()
-      } else {
-        // we only close the modal
-        this.hide()
-      }
-
-      // confirm code will be here soon(TM)
-    },
-    show(params) {
-      // making modal visible
-      this.visible = true
-      // setting title and text
-      this.title = params.title
-      this.text = params.text
-      // setting callback function
-      this.onConfirm = params.onConfirm
-    },
     close() {
       this.visible = false
     },
