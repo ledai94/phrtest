@@ -61,37 +61,40 @@ import DeckList from '@/components/Decks/DeckList.vue'
 export default {
   components: { DeckList },
   layout: 'default',
-
-  data() {
-    return {
-      decks: [
-        {
-          _id: 1,
-          name: 'learn english',
-          description:
-            'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-          thumbnail:
-            'https://idc.edu/wp-content/uploads/2018/12/15-Techniques-for-Learning-English-Vocabulary-850x390.jpg',
-        },
-        {
-          _id: 2,
-          name: 'learn CHINA',
-          description:
-            'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-          thumbnail:
-            'https://img2.pngio.com/intl-word-v601-english-for-mac-english-class-wallpaper-png-1920_1080.png',
-        },
-        {
-          _id: 3,
-          name: 'learn JP',
-          description:
-            'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-          thumbnail:
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS54R1bYvoPsIWo6BHqIivDptSPKjA8Y9oLOA&usqp=CAU',
-        },
-      ],
-    }
+  asyncData(context, callback) {
+    // eslint-disable-next-line nuxt/no-timing-in-fetch-data
+    setTimeout(() => {
+      callback(null, {
+        decks: [
+          {
+            _id: 1,
+            name: 'learn english',
+            description:
+              'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+            thumbnail:
+              'https://idc.edu/wp-content/uploads/2018/12/15-Techniques-for-Learning-English-Vocabulary-850x390.jpg',
+          },
+          {
+            _id: 2,
+            name: 'learn CHINA',
+            description:
+              'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+            thumbnail:
+              'https://img2.pngio.com/intl-word-v601-english-for-mac-english-class-wallpaper-png-1920_1080.png',
+          },
+          {
+            _id: 3,
+            name: 'learn JP',
+            description:
+              'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+            thumbnail:
+              'https://img2.pngio.com/intl-word-v601-english-for-mac-english-class-wallpaper-png-1920_1080.png',
+          },
+        ],
+      })
+    }, 1500)
   },
+
   methods: {
     closeModal() {
       this.$modal.close({ name: 'CreateDeckModal' })
