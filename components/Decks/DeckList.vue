@@ -1,6 +1,6 @@
 <template>
   <li>
-    <nuxt-link class="deck" to="/decks/1">
+    <nuxt-link class="deck" :to="`/decks/${id}`">
       <div class="card deck-card">
         <img :src="thumbnail" alt="" />
         <div class="card_body">
@@ -15,6 +15,11 @@
 <script>
 export default {
   props: {
+    id: {
+      type: Number,
+      require: true,
+      default: 1,
+    },
     name: {
       type: String,
       required: true,

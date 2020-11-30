@@ -2,7 +2,7 @@
   <section>
     <div class="r">
       <div class="ct">
-        <h3>Deck#{{ $route.params.id }}: learn enshfg</h3>
+        <h3>Deck#{{ $route.params.id }}:{{ decks.name }}</h3>
         <div class="tools">
           <button class="btn btn_success">start now</button>
           <button @click="openModal">create a card</button>
@@ -65,6 +65,23 @@ export default {
   // layout: 'default',
   // context se hung all va nang => lay ra prop
   components: { CardList },
+  asyncData(context, callback) {
+    // eslint-disable-next-line no-console
+    console.log(context)
+    // eslint-disable-next-line nuxt/no-timing-in-fetch-data
+    setTimeout(() => {
+      callback(null, {
+        decks: {
+          _id: 1,
+          name: `learn english by  ${context.params.id}`,
+          description:
+            'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+          thumbnail:
+            'https://idc.edu/wp-content/uploads/2018/12/15-Techniques-for-Learning-English-Vocabulary-850x390.jpg',
+        },
+      })
+    }, 1500)
+  },
   data() {
     return {
       cards: [
