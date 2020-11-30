@@ -8,17 +8,13 @@
         </button>
       </div>
       <ul class="deck-list">
-        <li v-for="deck in decks" :key="deck._id" class="">
-          <nuxt-link class="deck" to="/decks/1">
-            <div class="card deck-card">
-              <img src="deck.thumbnail" alt="" />
-              <div class="card_body">
-                <h3>{{ deck.name }}</h3>
-                <p>{{ deck.description }}</p>
-              </div>
-            </div>
-          </nuxt-link>
-        </li>
+        <deck-list
+          v-for="deck in decks"
+          :key="deck._id"
+          :name="deck.name"
+          :description="deck.description"
+          :thumbnail="deck.thumbnail"
+        ></deck-list>
       </ul>
       <v-modal name="CreateDeckModal"
         ><div class="modal_body">
@@ -61,7 +57,9 @@
   </div>
 </template>
 <script>
+import DeckList from '@/components/Decks/DeckList.vue'
 export default {
+  components: { DeckList },
   layout: 'default',
 
   data() {
@@ -70,23 +68,26 @@ export default {
         {
           _id: 1,
           name: 'learn english',
-          description: 'lorem class=d_flex justify_content_between my_3',
+          description:
+            'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
           thumbnail:
-            'https://img2.pngio.com/intl-word-v601-english-for-mac-english-class-wallpaper-png-1920_1080.png',
+            'https://idc.edu/wp-content/uploads/2018/12/15-Techniques-for-Learning-English-Vocabulary-850x390.jpg',
         },
         {
           _id: 2,
-          name: 'learn english',
-          description: 'lorem class=d_flex justify_content_between my_3',
+          name: 'learn CHINA',
+          description:
+            'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
           thumbnail:
             'https://img2.pngio.com/intl-word-v601-english-for-mac-english-class-wallpaper-png-1920_1080.png',
         },
         {
           _id: 3,
-          name: 'learn english',
-          description: 'lorem class=d_flex justify_content_between my_3',
+          name: 'learn JP',
+          description:
+            'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
           thumbnail:
-            'https://img2.pngio.com/intl-word-v601-english-for-mac-english-class-wallpaper-png-1920_1080.png',
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS54R1bYvoPsIWo6BHqIivDptSPKjA8Y9oLOA&usqp=CAU',
         },
       ],
     }

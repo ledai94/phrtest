@@ -10,14 +10,12 @@
         <hr class="divine" />
 
         <div class="r">
-          <div v-for="card in cards" :key="card._id" class="c_3">
-            <div class="card">
-              <div class="front-card">
-                <img :src="card.picture" alt="" />
-              </div>
-              <div class="back-card">{{ card.keyword }}</div>
-            </div>
-          </div>
+          <card-list
+            v-for="card in cards"
+            :key="card._id"
+            :keyword="card.keyword"
+            :picture="card.picture"
+          ></card-list>
         </div>
       </div>
     </div>
@@ -62,9 +60,11 @@
 </template>
 
 <script>
+import CardList from '@/components/Cards/CardList'
 export default {
   // layout: 'default',
   // context se hung all va nang => lay ra prop
+  components: { CardList },
   data() {
     return {
       cards: [
