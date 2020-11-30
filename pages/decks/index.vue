@@ -62,51 +62,7 @@ import DeckList from '@/components/Decks/DeckList.vue'
 export default {
   components: { DeckList },
   layout: 'default',
-  fetch(context) {
-    // eslint-disable-next-line nuxt/no-timing-in-fetch-data
-    return new Promise((resolve, reject) => {
-      // eslint-disable-next-line nuxt/no-timing-in-fetch-data
-      setTimeout(() => {
-        resolve({
-          decks: [
-            {
-              _id: 1,
-              name: `learn english`,
-              description:
-                'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-              thumbnail:
-                'https://idc.edu/wp-content/uploads/2018/12/15-Techniques-for-Learning-English-Vocabulary-850x390.jpg',
-            },
-            {
-              _id: 2,
-              name: `learn english `,
-              description:
-                'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-              thumbnail:
-                'https://idc.edu/wp-content/uploads/2018/12/15-Techniques-for-Learning-English-Vocabulary-850x390.jpg',
-            },
-            {
-              _id: 3,
-              name: `learn english `,
-              description:
-                'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-              thumbnail:
-                'https://idc.edu/wp-content/uploads/2018/12/15-Techniques-for-Learning-English-Vocabulary-850x390.jpg',
-            },
-          ],
-        })
-      }, 1500)
-      // reject(new Error())
-    })
-      .then((data) => {
-        context.store.dispatch('setDecks', data.decks)
-      })
-      .catch((e) => {
-        // eslint-disable-next-line no-console
-        console.log(e)
-        // context.error(e)
-      })
-  },
+
   computed: {
     decks() {
       return this.$store.getters.decks
