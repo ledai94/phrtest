@@ -62,38 +62,50 @@ import DeckList from '@/components/Decks/DeckList.vue'
 export default {
   components: { DeckList },
   layout: 'default',
-  asyncData(context, callback) {
+  asyncData(context) {
     // eslint-disable-next-line nuxt/no-timing-in-fetch-data
-    setTimeout(() => {
-      callback(null, {
-        decks: [
-          {
-            _id: 1,
-            name: 'learn english',
-            description:
-              'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-            thumbnail:
-              'https://idc.edu/wp-content/uploads/2018/12/15-Techniques-for-Learning-English-Vocabulary-850x390.jpg',
-          },
-          {
-            _id: 2,
-            name: 'learn CHINA',
-            description:
-              'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-            thumbnail:
-              'https://img2.pngio.com/intl-word-v601-english-for-mac-english-class-wallpaper-png-1920_1080.png',
-          },
-          {
-            _id: 3,
-            name: 'learn JP',
-            description:
-              'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-            thumbnail:
-              'https://img2.pngio.com/intl-word-v601-english-for-mac-english-class-wallpaper-png-1920_1080.png',
-          },
-        ],
+    return new Promise((resolve, reject) => {
+      // eslint-disable-next-line nuxt/no-timing-in-fetch-data
+      setTimeout(() => {
+        resolve({
+          decks: [
+            {
+              _id: 1,
+              name: `learn english by  ${context.params.id}`,
+              description:
+                'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+              thumbnail:
+                'https://idc.edu/wp-content/uploads/2018/12/15-Techniques-for-Learning-English-Vocabulary-850x390.jpg',
+            },
+            {
+              _id: 2,
+              name: `learn english by  ${context.params.id}`,
+              description:
+                'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+              thumbnail:
+                'https://idc.edu/wp-content/uploads/2018/12/15-Techniques-for-Learning-English-Vocabulary-850x390.jpg',
+            },
+            {
+              _id: 3,
+              name: `learn english by  ${context.params.id}`,
+              description:
+                'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+              thumbnail:
+                'https://idc.edu/wp-content/uploads/2018/12/15-Techniques-for-Learning-English-Vocabulary-850x390.jpg',
+            },
+          ],
+        })
+      }, 1500)
+      // reject(new Error())
+    })
+      .then((data) => {
+        return data
       })
-    }, 1500)
+      .catch((e) => {
+        // eslint-disable-next-line no-console
+        console.log(e)
+        // context.error(e)
+      })
   },
 
   methods: {
