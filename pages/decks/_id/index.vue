@@ -92,7 +92,10 @@ export default {
       if (name === 'CreateCardModal') {
         this.$modal.open({ name: 'CreateCardModal' })
       } else if (name === 'DeckFormModal') {
-        this.$modal.open({ name: 'DeckFormModal' })
+        this.$modal.open({
+          name: 'DeckFormModal',
+          payload: { ...this.deck, id: this.$route.params.id },
+        })
       }
     },
   },

@@ -3,9 +3,12 @@
     <DefaultHeader></DefaultHeader>
     <!-- nuxt chinh la page -->
     <Nuxt />
-    <v-modal name="DeckFormModal"
+    <v-modal v-slot="payload" name="DeckFormModal"
       ><div class="modal_body">
-        <h1>Create a new Deck</h1>
+        {{ payload }}
+        <h1>
+          {{ payload && payload.payload ? 'Edit a card' : 'Create a new Deck' }}
+        </h1>
         <deck-form @submit="onSubmit"></deck-form>
       </div>
     </v-modal>
