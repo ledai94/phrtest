@@ -29,17 +29,35 @@ export default {
   },
   methods: {
     onSubmit(deckData) {
-      axios
-        .post(
-          'https://nuxt-learning-english-2aaf5.firebaseio.com/decks.json',
-          deckData
-        )
-        .then((data) => {
-          console.log(data)
-        })
-        .catch((e) => {
-          console.log(e)
-        })
+      if (deckData && !deckData.id) {
+        axios
+          .post(
+            'https://nuxt-learning-english-2aaf5.firebaseio.com/decks.json',
+            deckData
+          )
+          .then((data) => {
+            console.log(data)
+          })
+          .catch((e) => {
+            console.log(e)
+          })
+      } else {
+        const deckId = deckData.id
+        delete deckData.id
+        axios
+          .put(
+            'https://nuxt-learning-english-2aaf5.firebaseio.com/decks/' +
+              deckId +
+              '.json',
+            deckData
+          )
+          .then((data) => {
+            console.log(data)
+          })
+          .catch((e) => {
+            console.log(e)
+          })
+      }
     },
   },
 }
