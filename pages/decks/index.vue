@@ -20,47 +20,20 @@
       <v-modal name="CreateDeckModal"
         ><div class="modal_body">
           <h1>Create a new Deck</h1>
-          <form action="">
-            <div class="form-group">
-              <label for="">Name</label>
-              <input
-                class="form_control"
-                type="text"
-                placeholder="pls enter name"
-              />
-            </div>
-            <div class="form-group">
-              <label for="">Des</label>
-              <textarea
-                class="form_control"
-                type="text"
-                placeholder="pls enter des"
-              />
-            </div>
-            <div class="form-group">
-              <label for="">Thumnail</label>
-              <input type="file" />
-              <div class="preview"></div>
-            </div>
-            <div class="form-group">
-              <button class="btn btn_danger" @click.prevent="closeModal">
-                close
-              </button>
-              <button class="btn btn_success" @click.prevent="createDeck">
-                Create
-              </button>
-            </div>
-          </form>
+          <deck-form @submit="onSubmit"></deck-form>
         </div>
       </v-modal>
-      <button @click="showModal">modal!</button>
+      <!-- <button @click="showModal">modal!</button> -->
     </div>
   </div>
 </template>
 <script>
+import axios from 'axios'
+
+import DeckForm from '@/components/Decks/DeckForm.vue'
 import DeckList from '@/components/Decks/DeckList.vue'
 export default {
-  components: { DeckList },
+  components: { DeckList, DeckForm },
   layout: 'default',
 
   computed: {
@@ -78,6 +51,19 @@ export default {
     },
     showDeck() {
       this.$router.push(`/decks/${this.deckID}`)
+    },
+    onSubmit(deckData) {
+      axios
+        .post(
+          'https://nuxt-learning-english-2aaf5.firebaseio.com/decks.json',
+          deckData
+        )
+        .then((data) => {
+          console.log(data)
+        })
+        .catch((e) => {
+          console.log(e)
+        })
     },
   },
 }
