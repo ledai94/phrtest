@@ -10,6 +10,15 @@ const createStore = () => {
       setDecks(state, decks) {
         state.decks = decks
       },
+      addDeck(state, newDeck) {
+        state.decks.push(newDeck)
+      },
+      editDeck(state, editDeck) {
+        const deckIndex = state.decks.findIndex(
+          (deck) => deck.id === editDeck.id
+        )
+        state.decks[deckIndex] = editDeck
+      },
     },
     actions: {
       nuxtServerInit(vuexContext, context) {
@@ -35,6 +44,16 @@ const createStore = () => {
               // context.error(e)
             })
         )
+      },
+      addDeck(vuexContext, deckData) {
+        return axios
+          .post(
+            'https://nuxt-learning-english-2aaf5.firebaseio.com/decks.json',
+            deckData
+          )
+          .then((result) => {
+            vuexContext.commit('addDeck', { ...deckData, id: result.data.name })
+          })
       },
       setDecks(vuexContext, decks) {
         vuexContext.commit('setDecks', decks)

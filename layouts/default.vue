@@ -30,17 +30,9 @@ export default {
   methods: {
     onSubmit(deckData) {
       if (deckData && !deckData.id) {
-        axios
-          .post(
-            'https://nuxt-learning-english-2aaf5.firebaseio.com/decks.json',
-            deckData
-          )
-          .then((data) => {
-            console.log(data)
-          })
-          .catch((e) => {
-            console.log(e)
-          })
+        this.$store
+          .dispatch('addDeck', deckData)
+          .then(() => this.$modal.close({ name: 'DeckFormModal' }))
       } else {
         const deckId = deckData.id
         delete deckData.id
