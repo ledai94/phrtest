@@ -55,6 +55,24 @@ const createStore = () => {
             vuexContext.commit('addDeck', { ...deckData, id: result.data.name })
           })
       },
+      editDeck(vuexContext, deckData) {
+        const deckId = deckData.id
+        delete deckData.id
+        return axios
+          .put(
+            'https://nuxt-learning-english-2aaf5.firebaseio.com/decks/' +
+              deckId +
+              '.json',
+            deckData
+          )
+          .then((result) => {
+            console.log(result)
+            vuexContext.commit('editDeck', { ...result.data, id: deckId })
+          })
+          .catch((e) => {
+            console.log(e)
+          })
+      },
       setDecks(vuexContext, decks) {
         vuexContext.commit('setDecks', decks)
       },

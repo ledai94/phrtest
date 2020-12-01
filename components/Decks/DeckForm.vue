@@ -29,7 +29,9 @@
       <div class="preview"></div>
     </div>
     <div class="form-group">
-      <button class="btn btn_danger" @click.prevent="closeModal">close</button>
+      <button class="btn btn_danger" type="button" @click.prevent="closeModal">
+        close
+      </button>
       <button class="btn btn_success" type="submit">
         {{ editedDeck && editedDeck.id ? 'Edit' : 'Create' }}
       </button>
