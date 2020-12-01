@@ -17,12 +17,7 @@
           :thumbnail="deck.thumbnail"
         ></deck-list>
       </ul>
-      <v-modal name="DeckFormModal"
-        ><div class="modal_body">
-          <h1>Create a new Deck</h1>
-          <deck-form @submit="onSubmit"></deck-form>
-        </div>
-      </v-modal>
+
       <!-- <button @click="showModal">modal!</button> -->
     </div>
   </div>
@@ -30,10 +25,9 @@
 <script>
 import axios from 'axios'
 
-import DeckForm from '@/components/Decks/DeckForm.vue'
 import DeckList from '@/components/Decks/DeckList.vue'
 export default {
-  components: { DeckList, DeckForm },
+  components: { DeckList },
   layout: 'default',
 
   computed: {

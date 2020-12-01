@@ -30,42 +30,6 @@
         </div>
       </div>
     </div>
-    <v-modal name="CreateCardModal"
-      ><div class="modal_body">
-        <h1>Create a new Card</h1>
-        <form action="">
-          <div class="form-group">
-            <label for="">Name</label>
-            <input
-              class="form_control"
-              type="text"
-              placeholder="pls enter name"
-            />
-          </div>
-          <div class="form-group">
-            <label for="">Des</label>
-            <textarea
-              class="form_control"
-              type="text"
-              placeholder="pls enter des"
-            />
-          </div>
-          <div class="form-group">
-            <label for="">Thumnail</label>
-            <input type="file" />
-            <div class="preview"></div>
-          </div>
-          <div class="form-group">
-            <button class="btn btn_danger" @click.prevent="closeModal">
-              close
-            </button>
-            <button class="btn btn_success" @click.prevent="createDeck">
-              Create
-            </button>
-          </div>
-        </form>
-      </div>
-    </v-modal>
   </section>
   <!-- <div>index deck {{ $route.params.id }} is active</div> -->
 </template>
