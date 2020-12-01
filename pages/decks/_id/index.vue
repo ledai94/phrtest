@@ -60,36 +60,24 @@
 </template>
 
 <script>
+import axios from 'axios'
 import CardList from '@/components/Cards/CardList'
 export default {
   // layout: 'default',
   // context se hung all va nang => lay ra prop
   components: { CardList },
   asyncData(context) {
+    return axios
+      .get(
+        `https://nuxt-learning-english-2aaf5.firebaseio.com/decks/${context.params.id}.json`
+      )
+      .then((response) => {
+        return {
+          deck: response.data,
+        }
+      })
     // eslint-disable-next-line no-console
-    console.log(context)
-    return new Promise((resolve, reject) => {
-      // eslint-disable-next-line nuxt/no-timing-in-fetch-data
-      setTimeout(() => {
-        resolve({
-          deck: {
-            _id: 1,
-            name: `learn english by  ${context.params.id}`,
-            description:
-              'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-            thumbnail:
-              'https://idc.edu/wp-content/uploads/2018/12/15-Techniques-for-Learning-English-Vocabulary-850x390.jpg',
-          },
-        })
-      }, 1500)
-    })
-      .then((data) => {
-        return data
-      })
-      .catch((e) => {
-        // eslint-disable-next-line no-console
-        console.log(e)
-      })
+    // eslint-disable-next-line nuxt/no-timing-in-fetch-data
   },
   data() {
     return {
