@@ -17,7 +17,7 @@
           :thumbnail="deck.thumbnail"
         ></deck-list>
       </ul>
-      <v-modal name="CreateDeckModal"
+      <v-modal name="DeckFormModal"
         ><div class="modal_body">
           <h1>Create a new Deck</h1>
           <deck-form @submit="onSubmit"></deck-form>
@@ -44,10 +44,10 @@ export default {
 
   methods: {
     closeModal() {
-      this.$modal.close({ name: 'CreateDeckModal' })
+      this.$modal.close({ name: 'DeckFormModal' })
     },
     openModal() {
-      this.$modal.open({ name: 'CreateDeckModal' })
+      this.$modal.open({ name: 'DeckFormModal' })
     },
     showDeck() {
       this.$router.push(`/decks/${this.deckID}`)
