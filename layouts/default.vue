@@ -9,7 +9,7 @@
         <h1>
           {{ payload && payload.payload ? 'Edit a card' : 'Create a new Deck' }}
         </h1>
-        <deck-form @submit="onSubmit"></deck-form>
+        <deck-form :deck="payload.payload" @submit="onSubmit"></deck-form>
       </div>
     </v-modal>
     <DefaultFooter />
